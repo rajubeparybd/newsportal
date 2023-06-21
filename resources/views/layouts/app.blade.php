@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/images/favicon.png')}}">
-
+    @laravelPWA
     <!-- STYLES -->
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}" type="text/css" media="all">
     <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}" type="text/css" media="all">
