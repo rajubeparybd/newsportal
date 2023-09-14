@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::group(["middleware" => ["auth", "verified"], "as" => "user.", "prefix" => "user"], function () {
     Route::get("/", function () {
         return redirect()->route("user.dashboard");
-    });
+    })->name("index");
 
     Route::get("/dashboard", function () {
         return view("user.dashboard");

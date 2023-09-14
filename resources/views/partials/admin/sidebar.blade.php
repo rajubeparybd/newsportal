@@ -28,7 +28,7 @@
                     <!-- item-->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{route('logout')}}"
+                        <a href="javascript:void(0);"
                            onclick="event.preventDefault(); this.closest('form').submit();"
                            class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
@@ -38,7 +38,7 @@
 
                 </div>
             </div>
-            <p class="text-muted">Admin Head</p>
+            <p class="text-muted">{{strtoupper(auth()->user()->roles[0]->name)}}</p>
         </div>
 
         <!--- Sidemenu -->
@@ -57,18 +57,17 @@
 
                 <li>
                     <a href="javascript: void(0);">
-                        <i class="mdi mdi-page-layout-sidebar-left"></i>
-                        <span> Layouts </span>
+                        <i class=" fas fa-user-friends"></i>
+                        <span> User Management </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="layouts-horizontal.html">Horizontal</a></li>
-                        <li><a href="layouts-sidebar-sm.html">Small Sidebar</a></li>
-                        <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                        <li><a href="layouts-dark-topbar.html">Dark Topbar</a></li>
-                        <li><a href="layouts-preloader.html">Preloader</a></li>
-                        <li><a href="layouts-sidebar-collapsed.html">Sidebar Collapsed</a></li>
-                        <li><a href="layouts-boxed.html">Boxed</a></li>
+                        <li><a href="{{route("admin.user.manager.permissions.index")}}"><i class="fas fa-lock"></i>
+                                Permissions</a></li>
+                        <li><a href="{{route("admin.user.manager.roles.index")}}"><i class="fas fa-briefcase"></i> Roles</a>
+                        </li>
+                        <li><a href="{{route("admin.user.manager.users.index")}}"><i class="fas fa-user"></i> Users</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
