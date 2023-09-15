@@ -46,7 +46,6 @@
                             @foreach($roles as $role)
                                 <option value="{{$role->id}}">{{permissionToWords($role->name)}}</option>
                             @endforeach
-                            <option selected value="0">User</option>
                         </select>
                         @error('role')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -87,8 +86,8 @@
             <tr class="text-center">
                 <td class="text-center align-middle">{{$loop->index+1}}</td>
                 <td class="text-center align-middle">
-                    @if(@$user->roles[0]->name != "admin")
-                        @cannot("edit_user" || "delete_user")
+                    @if((!$user->hasRole("admin")) || ($user->id != auth()->id()))
+                        @canany(["edit_user" , "delete_user"])
                             <div class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle arrow-none card-drop "
                                    data-toggle="dropdown"
@@ -132,7 +131,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5" class="text-center">No Role Found!</td>
+                <td colspan="5" class="text-center">No User Found!</td>
             </tr>
         @endforelse
         </tbody>

@@ -63,15 +63,43 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        if (!auth()->user()->hasPermissionTo("edit_user")) {
+            $notification = ["type" => "error", "message" => "Don't have permission!"];
+            return redirect()->back()->with("notification", $notification);
+        }
+        return view("admin.user.edit", [
+            "user" => $user,
+            "roles" => Role::select(["id", "name"])->get()
+        ]);
     }
 
     public function update(Request $request, User $user)
     {
+        if (!auth()->user()->hasPermissionTo("edit_user")) {
+            $notification = ["type" => "error", "message" => "Don't have permission!"];
+            return redirect()->back()->with("notification", $notification);
+        }
+
+        $request->validate([
+            "name" => ['required', 'string'],
+            "email" => ['required', 'email', 'unique:users,email,' . $user->id],
+            "role" => ['required', 'integer']
+        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user_updated = $user->save();
+
+        $role = $user->syncRoles($request->role);
+
+        $notification = ($role && $user_updated)
+            ? ["type" => "success", "message" => "User updated successfully!"]
+            : ["type" => "error", "message" => "User updated failed!"];
+        return redirect()->route("admin.user.manager.users.index")->with("notification", $notification);
     }
 
     public function destroy(User $user)
     {
-        if (!auth()->user()->hasPermissionTo("delete_role") || @$user->roles[0]->name == "admin") {
+        if (!auth()->user()->hasPermissionTo("delete_role") || $user->hasRole("admin")) {
             $notification = ["type" => "error", "message" => "Don't have permission!"];
             return redirect()->back()->with("notification", $notification);
         }

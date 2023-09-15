@@ -1,0 +1,14 @@
+[
+    {
+        "name": "user",
+        "description": "The is default user role. It has user permissions",
+        "permissions": [
+            "view_website"
+        ]
+    },
+    {
+        "name": "admin",
+        "description": "The is default admin role. It has all permissions",
+        "permissions": "all"
+    }
+]

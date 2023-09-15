@@ -78,38 +78,38 @@
             <tr>
                 <td class="text-center align-middle">{{$loop->index+1}}</td>
                 <td class="text-center align-middle">
-                    {{--                    @if($role->name != "admin")--}}
-                    @cannot("edit_role" || "delete_role")
-                        <div class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle arrow-none card-drop "
-                               data-toggle="dropdown"
-                               aria-expanded="false">
-                                <i class="fe-menu btn btn-primary"></i>
-                            </a>
+                    @if($role->name != "admin")
+                        @canany(["edit_user" , "delete_user"])
+                            <div class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle arrow-none card-drop "
+                                   data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <i class="fe-menu btn btn-primary"></i>
+                                </a>
 
-                            <div class="dropdown-menu" style=""> {{--dropdown-menu-right--}}
-                                @can("edit_role")
-                                    <a href="{{route("admin.user.manager.roles.edit", $role->id)}}"
-                                       class="dropdown-item">
-                                        <i class="mdi-pencil mdi"></i> Edit
-                                    </a>
-                                @endcan
-                                @can("delete_role")
-                                    <form method="POST"
-                                          action="{{route("admin.user.manager.roles.destroy", $role->id)}}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="javascript:void(0);" type="button"
-                                           class="dropdown-item show_confirm">
-                                            <i class="mdi mdi-delete"></i>
-                                            Delete
+                                <div class="dropdown-menu" style=""> {{--dropdown-menu-right--}}
+                                    @can("edit_role")
+                                        <a href="{{route("admin.user.manager.roles.edit", $role->id)}}"
+                                           class="dropdown-item">
+                                            <i class="mdi-pencil mdi"></i> Edit
                                         </a>
-                                    </form>
-                                @endcan
+                                    @endcan
+                                    @can("delete_role")
+                                        <form method="POST"
+                                              action="{{route("admin.user.manager.roles.destroy", $role->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="javascript:void(0);" type="button"
+                                               class="dropdown-item show_confirm">
+                                                <i class="mdi mdi-delete"></i>
+                                                Delete
+                                            </a>
+                                        </form>
+                                    @endcan
+                                </div>
                             </div>
-                        </div>
-                    @endcannot
-                    {{--                    @endif--}}
+                        @endcannot
+                    @endif
                 </td>
                 <td class="text-center align-middle">{{roleToWords($role->name)}}</td>
                 <td class="align-middle">

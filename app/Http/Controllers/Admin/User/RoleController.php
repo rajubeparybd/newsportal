@@ -13,7 +13,7 @@ class RoleController extends Controller
     {
         return view("admin.user.role.index", [
             "roles" => Role::with("permissions")->get(),
-            "permissions" => Permission::all()
+            "permissions" => Permission::select(["id", "name"])->get()
         ]);
     }
 
@@ -53,15 +53,13 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        if (!auth()->user()->hasPermissionTo("edit_role") /*|| $role->name == "admin"*/) {
+        if (!auth()->user()->hasPermissionTo("edit_role") || $role->name == "admin") {
             $notification = ["type" => "error", "message" => "Don't have permission!"];
             return redirect()->back()->with("notification", $notification);
         }
         return view("admin.user.role.edit", [
             "role" => $role,
-            "roleHasPermissions" => $role->permissions->map(function ($permission) {
-                return $permission->id;
-            })->toArray(),
+            "roleHasPermissions" => $role->permissions->pluck("id")->toArray(),
             "permissions" => Permission::all()
         ]);
     }
