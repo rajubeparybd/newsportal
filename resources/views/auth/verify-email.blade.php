@@ -5,7 +5,7 @@
         </div>
         <img src="{{asset('backend/images/mail_confirm.png')}}" alt="img" width="86" class="mx-auto d-block"/>
 
-        <p class="text-muted font-14 mt-2"> A email has been send to <b>youremail@domain.com</b>.
+        <p class="text-muted font-14 mt-2"> A email has been send to <b>{{auth()->user()->email}}</b>.
             Please check for an email from company and click on the included link to
             reset your password. </p>
         @if (session('status') == 'verification-link-sent')

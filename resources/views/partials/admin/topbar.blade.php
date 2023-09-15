@@ -14,6 +14,9 @@
                 </div>
             </form>
         </li>
+        <li class="d-none d-sm-block notification-list" style="font-size: 25px;">
+            <a href="{{route("admin.changeTheme")}}" class="nav-link"><i class="fas fa-sun"></i></a>
+        </li>
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="false" aria-expanded="false">
@@ -158,7 +161,7 @@
             </button>
         </li>
         <li>
-            <h3 class="page-title-main">Dashboard</h3>
+            <h3 class="page-title-main">@yield("page", "Dashboard")</h3>
         </li>
     </ul>
 </div>

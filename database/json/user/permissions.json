@@ -1,0 +1,42 @@
+[
+    {
+        "name": "view_website",
+        "description": "This permission allows the user to view the website"
+    },
+    {
+        "name": "create_role",
+        "description": "This permission allows the user to create a new role"
+    },
+    {
+        "name": "edit_role",
+        "description": "This permission allows the user to edit a role"
+    },
+    {
+        "name": "delete_role",
+        "description": "This permission allows the user to delete a role"
+    },
+    {
+        "name": "create_user",
+        "description": "This permission allows the user to create a new user"
+    },
+    {
+        "name": "edit_user",
+        "description": "This permission allows the user to edit a user"
+    },
+    {
+        "name": "delete_user",
+        "description": "This permission allows the user to delete a user"
+    },
+    {
+        "name": "create_permission",
+        "description": "This permission allows the user to create a new permission"
+    },
+    {
+        "name": "edit_permission",
+        "description": "This permission allows the user to edit a permission"
+    },
+    {
+        "name": "delete_permission",
+        "description": "This permission allows the user to delete a permission"
+    }
+]
