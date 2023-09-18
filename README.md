@@ -1,24 +1,30 @@
 # About News Portal
 
-News Portal project is a Laravel application designed for the purpose of managing and displaying news articles on a website. It provides a platform for publishing, organizing, and presenting news content to a wide audience. The project aims to simplify the process of managing news articles, enhancing the overall user experience for both content creators and readers.
-
-
+News Portal project is a Laravel application designed for the purpose of managing and displaying news articles on a
+website. It provides a platform for publishing, organizing, and presenting news content to a wide audience. The project
+aims to simplify the process of managing news articles, enhancing the overall user experience for both content creators
+and readers.
 
 ## Key Features
-- User Authentication
-- Role Management
-- Article Publishg & Management
-- Search and Filtering
-- Commenting and Sharing
-- Responsive Design
 
+- [x] User Authentication
+- [x] Role Management
+- [ ] Category Management
+- [ ] Article Publish & Management
+- [ ] Premium Subscription
+- [ ] Dashboard Analytics
+- [ ] User Dashboard
+- [ ] Search
+- [ ] Website Homepage
+- [ ] Website Settings
+- [ ] Commenting and Sharing
+- [ ] Responsive Design
 
 ## Tech Stack
 
 **Client:** Laravel Blade, TailwindCSS
 
 **Server:** Laravel, MySQL
-
 
 ## Run Locally
 
